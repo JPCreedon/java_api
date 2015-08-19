@@ -33,7 +33,7 @@ The iterable Timeline class yields timepoints of data for a given stream that en
 {"date":"2015-08-19 00:45Z","sentiment":0.0,"tweets":2}
 ```
 
-### Timeline Paramters
+### Timeline Parameters
 
 ##### stream & resolution 
 The constructor requires **stream** and **resolution** where:
@@ -111,6 +111,10 @@ Timeline timeline = new Timeline("AAPL", "M");
 ## com.infinigongroup.api.Tweets
 
 You can use the Tweets iterable  to request tweets from any stream for a given period in time.
+
+### Timeline Parameters
+
+##### stream & resolution
 The constructor requires Stream and resolution where:
 Where:
 stream
