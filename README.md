@@ -47,7 +47,7 @@ The constructor requires **stream** and **resolution** where:
  d | for days
  
 ##### start & stop 
-Optionally you can give a date and time range by setting **start** and **stop** with a date. **stop** parameter always defaults to now, while **start's** default value depends of the resoluti on given.
+Optionally you can give a date and time range by setting **start** and **stop**. **stop** parameter always defaults to now, while **start's** default value depends of the resoluti on given.
 
  Format | Default Start Value |
  --- | --- 
@@ -56,7 +56,7 @@ Optionally you can give a date and time range by setting **start** and **stop** 
  d |	30 days ago
     
     
-You can specify the dates using [java.utils.Date](https://docs.oracle.com/javase/6/docs/api/java/util/Date.html) as String in many formats see [Date Formats] (http://realtime.infinigongroup.com/api/docs/#data_dates). All times are by default **UTC** so you must be explicit and add the timezone. You can test your date and time values using: 
+You can specify the dates using [java.utils.Date](https://docs.oracle.com/javase/6/docs/api/java/util/Date.html) or you can also use a String in many formats (see [Date Formats] (http://realtime.infinigongroup.com/api/docs/#data_dates)). All times are by default **UTC** so you must be explicit and add the timezone. You can test your date and time values using: 
 
 ##### Time Delta
 
@@ -108,7 +108,7 @@ Timeline timeline = new Timeline("AAPL", "M");
 
 
 
-## Tweets
+## com.infinigongroup.api.Tweets
 
 You can use the Tweets iterable  to request tweets from any stream for a given period in time.
 The constructor requires Stream and resolution where:
@@ -146,7 +146,7 @@ Where timepoint is a java.util.Date.
 {"date":"2015-08-19 00:43Z","sentiment":0.62,"tweets":26}
 ```
 
-## Snapshots
+## com.infinigongroup.api.Snapshots
 
 Snapshot - Returns aggregation data for the streams selection of streams. Use this API to generate grids, maps, heat trees and clouds for groups of streams.
 ```java
