@@ -13,7 +13,7 @@ All the iterators take an optional Proxy object.
 
 ```java
 	Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("10.38.89.25", 8080));
-	Timeline timeline = new Timeline("AAPL", "M", proxy);
+	TimeSeries timeline = new Timeline("AAPL", "M", proxy);
 	for (Object timepoint : timeline) {
 			System.out.println(timepoint);
 	}
@@ -42,18 +42,18 @@ The constructor requires **stream** and **resolution** where:
  
  code | resolution
  --- | ---
- `Timeline.M` | for minutes
- `Timeline.H` | for hours
- `Timeline.d` | for days
+ `TimeSeries.M` | for minutes
+ `TimeSeries.H` | for hours
+ `TimeSeries.d` | for days
  
 ##### start & stop 
 Optionally you can give a date and time range by setting **start** and **stop**. **stop** parameter always defaults to now, while **start's** default value depends of the resoluti on given.
 
  Format | Default Start Value |
  --- | --- 
- `Timeline.M` |	24 hours ago
- `Timeline.H` |	7 days ago
- `Timeline.d` |	30 days ago
+ `TimeSeries.M` |	24 hours ago
+ `TimeSeries.H` |	7 days ago
+ `TimeSeries.d` |	30 days ago
     
     
 You can specify the dates using [`java.utils.Date`](https://docs.oracle.com/javase/6/docs/api/java/util/Date.html) or you can also use a String in many formats (see [Date Formats] (http://realtime.infinigongroup.com/api/docs/#data_dates)). All times are by default **`UTC`** so you must be explicit and add the timezone. You can test your date and time values using: 
@@ -77,7 +77,7 @@ y |	years	| `"1y"` | starting a year ago
 ##### Reading minute timepoints for AAPL
 
 ```java
-Timeline timeline = new Timeline("AAPL", Timeline.M, proxy);
+TimeSeries timeline = new Timeline("AAPL", TimeSeries.M, proxy);
 for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 	System.out.print(i+". ");
 	System.out.println(timeline.next());
@@ -99,7 +99,7 @@ for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 ##### Reading hour of timepoints for AAPL
 
 ```java
-Timeline timeline = new Timeline("AAPL", Timeline.H, proxy);
+TimeSeries timeline = new Timeline("AAPL", TimeSeries.H, proxy);
 for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 	System.out.print(i+". ");
 	System.out.println(timeline.next());
@@ -121,7 +121,7 @@ for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 ##### Reading day of timepoints for AAPL
 
 ```java
-Timeline timeline = new Timeline("AAPL", Timeline.d, proxy);
+TimeSeries timeline = new Timeline("AAPL", TimeSeries.d, proxy);
 for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 	System.out.print(i+". ");
 	System.out.println(timeline.next());
@@ -144,7 +144,7 @@ for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 ##### Reading last 4 days of day of timepoints for AAPL
 
 ```java
-Timeline timeline = new Timeline("AAPL", Timeline.d, proxy).start("4d");
+TimeSeries timeline = new Timeline("AAPL", TimeSeries.d, proxy).start("4d");
 for(int i=0; i < 20 && timeline.hasNext(); i++)  {
 	System.out.print(i+". ");
 	System.out.println(timeline.next());
@@ -160,7 +160,7 @@ for(int i=0; i < 20 && timeline.hasNext(); i++)  {
 ##### Reading minute data from a given time of day for AAPL
 
 ```java
-Timeline timeline = new Timeline("AAPL", Timeline.M).start("2015-08-19 12:34 EST").stop("2015-08-19 12:41 EST");
+TimeSeries timeline = new Timeline("AAPL", TimeSeries.M).start("2015-08-19 12:34 EST").stop("2015-08-19 12:41 EST");
 for(int i=0; i < 20 && timeline.hasNext(); i++)  {
 	System.out.print(i+". ");
 	System.out.println(timeline.next());
