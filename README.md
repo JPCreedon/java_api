@@ -136,25 +136,6 @@ for (Object timepoint : timeline) {
 
 ```java
 // Here AAPL is the stream and M is the resolution.
-Timeline timeline = new Timeline("AAPL", "d");
-for (Object timepoint : timeline) {
-	System.out.println(timepoint);
-}
-```
-```json
-{"date":"2015-07-22 00:00Z","sentiment":0.62,"tweets":26528}
-{"date":"2015-07-23 00:00Z","sentiment":0.64,"tweets":22045}
-{"date":"2015-07-24 00:00Z","sentiment":0.65,"tweets":24992}
-{"date":"2015-07-25 00:00Z","sentiment":0.63,"tweets":29631}
-{"date":"2015-07-26 00:00Z","sentiment":0.42,"tweets":1436}
-{"date":"2015-07-27 00:00Z","sentiment":0.61,"tweets":11123}
-{"date":"2015-07-28 00:00Z","sentiment":0.65,"tweets":26182}
-```
-
-##### Reading last 4 days of day of timepoints for AAPL
-
-```java
-// Here AAPL is the stream and M is the resolution.
 Timeline timeline = new Timeline("AAPL", "d").start("4d");
 for (Object timepoint : timeline) {
 	System.out.println(timepoint);
