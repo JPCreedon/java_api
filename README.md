@@ -148,9 +148,35 @@ for (Object timepoint : timeline) {
 {"date":"2015-08-20 00:00Z","sentiment":0.68,"tweets":20481}
 ```
 
+##### Reading minute data from a given time of day for AAPL
 
-
-
+```java
+// Here AAPL is the stream and M is the resolution.
+Timeline timeline = new Timeline("AAPL", "d").start("2015-08-19 12:34 EST").stop("2015-08-19 12:51 EST");
+for (Object timepoint : timeline) {
+	System.out.println(timepoint);
+}
+```
+```json
+{"date":"2015-08-19 17:34Z","sentiment":0.66,"tweets":32}
+{"date":"2015-08-19 17:35Z","sentiment":0.61,"tweets":36}
+{"date":"2015-08-19 17:36Z","sentiment":0.74,"tweets":31}
+{"date":"2015-08-19 17:37Z","sentiment":0.68,"tweets":41}
+{"date":"2015-08-19 17:38Z","sentiment":0.72,"tweets":36}
+{"date":"2015-08-19 17:39Z","sentiment":0.53,"tweets":19}
+{"date":"2015-08-19 17:40Z","sentiment":0.72,"tweets":32}
+{"date":"2015-08-19 17:41Z","sentiment":0.6,"tweets":35}
+{"date":"2015-08-19 17:42Z","sentiment":0.75,"tweets":44}
+{"date":"2015-08-19 17:43Z","sentiment":0.72,"tweets":46}
+{"date":"2015-08-19 17:44Z","sentiment":0.72,"tweets":39}
+{"date":"2015-08-19 17:45Z","sentiment":0.69,"tweets":39}
+{"date":"2015-08-19 17:46Z","sentiment":0.65,"tweets":34}
+{"date":"2015-08-19 17:47Z","sentiment":0.68,"tweets":38}
+{"date":"2015-08-19 17:48Z","sentiment":0.7,"tweets":44}
+{"date":"2015-08-19 17:49Z","sentiment":0.69,"tweets":35}
+{"date":"2015-08-19 17:50Z","sentiment":0.67,"tweets":36}
+{"date":"2015-08-19 17:51Z","sentiment":0.56,"tweets":25}
+```
 
 
 ## com.infinigongroup.api.Tweets
