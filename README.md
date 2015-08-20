@@ -77,75 +77,83 @@ y |	years	| 1y | starting a year ago
 ##### Reading minute timepoints for AAPL
 
 ```java
-// Here AAPL is the stream and M is the resolution.
-Timeline timeline = new Timeline("AAPL", "M");
-		for (Object timepoint : timeline) {
-			System.out.println(timepoint);
-		}
+Timeline timeline = new Timeline("AAPL", "M", proxy);
+for(int i=0; i < 10 && timeline.hasNext(); i++)  {
+	System.out.print(i+". ");
+	System.out.println(timeline.next());
+}
 ```
 ```json
-{"date":"2015-08-19 13:00Z","sentiment":0.66,"tweets":50}
-{"date":"2015-08-19 13:01Z","sentiment":0.61,"tweets":41}
-{"date":"2015-08-19 13:02Z","sentiment":0.73,"tweets":33}
-{"date":"2015-08-19 13:03Z","sentiment":0.69,"tweets":29}
-{"date":"2015-08-19 13:04Z","sentiment":0.66,"tweets":38}
-{"date":"2015-08-19 13:05Z","sentiment":0.65,"tweets":23}
-{"date":"2015-08-19 13:06Z","sentiment":0.7,"tweets":33}
+0. {"date":"2015-08-19 16:35Z","sentiment":0.67,"tweets":18}
+1. {"date":"2015-08-19 16:36Z","sentiment":0.64,"tweets":39}
+2. {"date":"2015-08-19 16:37Z","sentiment":0.67,"tweets":21}
+3. {"date":"2015-08-19 16:38Z","sentiment":0.73,"tweets":37}
+4. {"date":"2015-08-19 16:39Z","sentiment":0.63,"tweets":52}
+5. {"date":"2015-08-19 16:40Z","sentiment":0.61,"tweets":28}
+6. {"date":"2015-08-19 16:41Z","sentiment":0.66,"tweets":32}
+7. {"date":"2015-08-19 16:42Z","sentiment":0.65,"tweets":37}
+8. {"date":"2015-08-19 16:43Z","sentiment":0.63,"tweets":30}
+9. {"date":"2015-08-19 16:44Z","sentiment":0.7,"tweets":44}
 ```
 
 ##### Reading hour of timepoints for AAPL
 
 ```java
-// Here AAPL is the stream and M is the resolution.
-Timeline timeline = new Timeline("AAPL", "H");
-		for (Object timepoint : timeline) {
-			System.out.println(timepoint);
-		}
+Timeline timeline = new Timeline("AAPL", "H", proxy);
+for(int i=0; i < 10 && timeline.hasNext(); i++)  {
+	System.out.print(i+". ");
+	System.out.println(timeline.next());
+}
 ```
 ```json
-{"date":"2015-08-10 14:00Z","sentiment":0.67,"tweets":2076}
-{"date":"2015-08-10 15:00Z","sentiment":0.63,"tweets":2476}
-{"date":"2015-08-10 16:00Z","sentiment":0.65,"tweets":2442}
-{"date":"2015-08-10 17:00Z","sentiment":0.65,"tweets":2193}
-{"date":"2015-08-10 18:00Z","sentiment":0.64,"tweets":2326}
-{"date":"2015-08-10 19:00Z","sentiment":0.66,"tweets":2408}
-{"date":"2015-08-10 20:00Z","sentiment":0.65,"tweets":2209}
+0. {"date":"2015-08-10 17:00Z","sentiment":0.65,"tweets":2193}
+1. {"date":"2015-08-10 18:00Z","sentiment":0.64,"tweets":2326}
+2. {"date":"2015-08-10 19:00Z","sentiment":0.66,"tweets":2408}
+3. {"date":"2015-08-10 20:00Z","sentiment":0.65,"tweets":2209}
+4. {"date":"2015-08-10 21:00Z","sentiment":0.62,"tweets":1974}
+5. {"date":"2015-08-10 22:00Z","sentiment":0.63,"tweets":1857}
+6. {"date":"2015-08-10 23:00Z","sentiment":0.64,"tweets":1762}
+7. {"date":"2015-08-11 00:00Z","sentiment":0.63,"tweets":1671}
+8. {"date":"2015-08-11 01:00Z","sentiment":0.63,"tweets":1665}
+9. {"date":"2015-08-11 02:00Z","sentiment":0.63,"tweets":1874}
 ```
 
 ##### Reading day of timepoints for AAPL
 
 ```java
-// Here AAPL is the stream and M is the resolution.
-Timeline timeline = new Timeline("AAPL", "d");
-for (Object timepoint : timeline) {
-	System.out.println(timepoint);
+Timeline timeline = new Timeline("AAPL", "d", proxy);
+for(int i=0; i < 10 && timeline.hasNext(); i++)  {
+	System.out.print(i+". ");
+	System.out.println(timeline.next());
 }
-```
 ```json
-{"date":"2015-07-22 00:00Z","sentiment":0.62,"tweets":26528}
-{"date":"2015-07-23 00:00Z","sentiment":0.64,"tweets":22045}
-{"date":"2015-07-24 00:00Z","sentiment":0.65,"tweets":24992}
-{"date":"2015-07-25 00:00Z","sentiment":0.63,"tweets":29631}
-{"date":"2015-07-26 00:00Z","sentiment":0.42,"tweets":1436}
-{"date":"2015-07-27 00:00Z","sentiment":0.61,"tweets":11123}
-{"date":"2015-07-28 00:00Z","sentiment":0.65,"tweets":26182}
+0. {"date":"2015-07-22 00:00Z","sentiment":0.62,"tweets":26528}
+1. {"date":"2015-07-23 00:00Z","sentiment":0.64,"tweets":22045}
+2. {"date":"2015-07-24 00:00Z","sentiment":0.65,"tweets":24992}
+3. {"date":"2015-07-25 00:00Z","sentiment":0.63,"tweets":29631}
+4. {"date":"2015-07-26 00:00Z","sentiment":0.42,"tweets":1436}
+5. {"date":"2015-07-27 00:00Z","sentiment":0.61,"tweets":11123}
+6. {"date":"2015-07-28 00:00Z","sentiment":0.65,"tweets":26182}
+7. {"date":"2015-07-29 00:00Z","sentiment":0.66,"tweets":24080}
+8. {"date":"2015-07-30 00:00Z","sentiment":0.66,"tweets":42599}
+9. {"date":"2015-07-31 00:00Z","sentiment":0.63,"tweets":52068
 ```
 
 
 ##### Reading last 4 days of day of timepoints for AAPL
 
 ```java
-// Here AAPL is the stream and M is the resolution.
-Timeline timeline = new Timeline("AAPL", "d").start("4d");
-for (Object timepoint : timeline) {
-	System.out.println(timepoint);
+Timeline timeline = new Timeline("AAPL", "d", proxy).start("4d");
+for(int i=0; i < 20 && timeline.hasNext(); i++)  {
+	System.out.print(i+". ");
+	System.out.println(timeline.next());
 }
 ```
 ```json
-{"date":"2015-08-17 00:00Z","sentiment":0.65,"tweets":41620}
-{"date":"2015-08-18 00:00Z","sentiment":0.66,"tweets":41506}
-{"date":"2015-08-19 00:00Z","sentiment":0.66,"tweets":42823}
-{"date":"2015-08-20 00:00Z","sentiment":0.68,"tweets":20481}
+0. {"date":"2015-08-17 00:00Z","sentiment":0.65,"tweets":41620}
+1. {"date":"2015-08-18 00:00Z","sentiment":0.66,"tweets":41506}
+2. {"date":"2015-08-19 00:00Z","sentiment":0.66,"tweets":42823}
+3. {"date":"2015-08-20 00:00Z","sentiment":0.68,"tweets":28244}
 ```
 
 ##### Reading minute data from a given time of day for AAPL
