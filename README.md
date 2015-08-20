@@ -22,18 +22,18 @@ All the iterators take an optional Proxy object.
 
 
 
-## com.infinigongroup.api.Timeline
+## `com.infinigongroup.api.Timeline`
 
-The iterable Timeline class yields timepoints of data for a given stream that enable you to build timeline charts for individual streams. 
+The iterable `Timeline` class yields timepoints of data for a given stream that enable you to build timeline charts for individual streams. 
 
-### Timeline Data
+### `Timeline` Data
 
 
 ```json
 {"date":"2015-08-19 00:45Z","sentiment":0.0,"tweets":2}
 ```
 
-### Timeline Parameters
+### `Timeline` Parameters
 
 ##### stream & resolution 
 The constructor requires **stream** and **resolution** where:
@@ -42,21 +42,21 @@ The constructor requires **stream** and **resolution** where:
  
  code | resolution
  --- | ---
- Timeline.M | for minutes
- Timeline.H | for hours
- Timeline.d | for days
+ `Timeline.M` | for minutes
+ `Timeline.H` | for hours
+ `Timeline.d` | for days
  
 ##### start & stop 
 Optionally you can give a date and time range by setting **start** and **stop**. **stop** parameter always defaults to now, while **start's** default value depends of the resoluti on given.
 
  Format | Default Start Value |
  --- | --- 
- Timeline.M |	24 hours ago
- Timeline.H |	7 days ago
- Timeline.d |	30 days ago
+ `Timeline.M` |	24 hours ago
+ `Timeline.H` |	7 days ago
+ `Timeline.d` |	30 days ago
     
     
-You can specify the dates using [java.utils.Date](https://docs.oracle.com/javase/6/docs/api/java/util/Date.html) or you can also use a String in many formats (see [Date Formats] (http://realtime.infinigongroup.com/api/docs/#data_dates)). All times are by default **UTC** so you must be explicit and add the timezone. You can test your date and time values using: 
+You can specify the dates using [`java.utils.Date`](https://docs.oracle.com/javase/6/docs/api/java/util/Date.html) or you can also use a String in many formats (see [Date Formats] (http://realtime.infinigongroup.com/api/docs/#data_dates)). All times are by default **`UTC`** so you must be explicit and add the timezone. You can test your date and time values using: 
 
 ##### Time Delta
 
@@ -64,15 +64,15 @@ For the **start** parameter you can also give a *time delta*, specifying a perio
 
 Period Code |	Period	| Example | Description 
 --- | --- | --- | --- | ---
-M |	minutes	| 30M | starting thirty minutes ago
-H |	hours	| 8H | starting eight hours ago
-d |	days	| 5d | starting five days ago
-w |	weeks	| 2w | starting fortnight ago
-m |	months	| 3m | starting on the same date 3 months ago
-y |	years	| 1y | starting a year ago
+M |	minutes	| `"30M"` | starting thirty minutes ago
+H |	hours	| `"8H"` | starting eight hours ago
+d |	days	|`"5d"` | starting five days ago
+w |	weeks	| `"2w"` | starting fortnight ago
+m |	months	| `"3m"` | starting on the same date 3 months ago
+y |	years	| `"1y"` | starting a year ago
 
 
-### Timeline Examples
+### `Timeline` Examples
 
 ##### Reading minute timepoints for AAPL
 
@@ -178,7 +178,7 @@ for(int i=0; i < 20 && timeline.hasNext(); i++)  {
 ```
 
 
-## com.infinigongroup.api.Tweets
+## `com.infinigongroup.api.Tweets`
 
 You can use the Tweets iterable  to request tweets from any stream for a given period in time.
 
