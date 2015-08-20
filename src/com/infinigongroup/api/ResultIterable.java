@@ -12,7 +12,15 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
-public abstract class ResultIteratable implements Iterable<Object> {
+
+/**
+ * An abstract class that lets you iterate through paged json lists of records.
+ * 
+ * @author      Thanos Vassilakis
+ * @version     %I%, %G%
+ * @since       1.0
+ */
+public abstract class ResultIterable implements Iterable<Object> {
 
 	public final String host = "http://api.infinigongroup.com";
 
@@ -23,13 +31,12 @@ public abstract class ResultIteratable implements Iterable<Object> {
 	int head = 0;
 	int total = 0;
 	Proxy proxy;
-	public String resolution;
-
-	public ResultIteratable() {
+	
+	public ResultIterable() {
 		this(null);
 	}
 
-	public ResultIteratable(Proxy proxy) {
+	public ResultIterable(Proxy proxy) {
 		this.proxy = proxy;
 	}
 
@@ -42,7 +49,7 @@ public abstract class ResultIteratable implements Iterable<Object> {
 
 	abstract Object getResults();
 
-	public void load(String url_string) {
+	protected void load(String url_string) {
 
 		HttpURLConnection connection;
 		try {
@@ -58,19 +65,65 @@ public abstract class ResultIteratable implements Iterable<Object> {
 		}
 	}
 
+	
+	/**
+	 * Returns a JSON object: content of a REST GET
+	 * The br argument must specify an absolute {@link BufferedReader}. 
+	 * <p> 
+	 * 
+	 * If you need to use a JSON library other than the default, you have to override this method.
+	 * 
+	 * @param  br  BufferedReader of the URL GET content result.
+	 * @return      A JSON object representation of the response content.
+	 * @see         BufferedReader
+	 */
+
 	protected Object parse(BufferedReader br) {
 
 		return JSONValue.parse(br);
 	}
 
+	
+	
+	/**
+	 * Returns the  size of the JOSN array holding a list of results.
+	 * <p> 
+	 * 
+	 * If you need to use a JSON library other than the default, you have to override this method.
+	 * 
+	 * @return      Size of the JOSN array holding a list of results.
+	 * @see         parse
+	 */
 	protected int resultsSize() {
 		return ((JSONArray) results).size();
 	}
 
+	/**
+	 * Returns the  an array element - a JSON object.
+	 * <p> 
+	 * 
+	 * If you need to use a JSON library other than the default, you have to override this method.
+	 * 
+	 * @param  index  - the index of the element required.
+	 * @return     Returns the  an array element - a JSON object.
+	 * @see         parse
+	 */
+	
 	protected Object resultsGet(int index) {
 		return ((JSONArray) results).get(index);
 	}
-
+	
+	
+	/**
+	 * Returns  a JSON object (possible an array) from the REST JSON response.
+	 * <p> 
+	 * 
+	 * If you need to use a JSON library other than the default, you have to override this method.
+	 * 
+	 * @param  key  - the key of the object required.
+	 * @return     Returns  a JSON object (possible an array) from the REST JSON response.
+	 * @see        parse
+	 */
 	protected Object responseGet(String key) {
 		return ((JSONObject) response).get(key);
 	}

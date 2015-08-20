@@ -2,7 +2,7 @@ package com.infinigongroup.api;
 
 import java.net.Proxy;
 
-public class Snapshots extends ResultIteratable {
+public class Snapshots extends ResultIterable {
 
 	String include_streams;
 	String include_tags;
