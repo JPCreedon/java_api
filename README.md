@@ -42,18 +42,18 @@ The constructor requires **stream** and **resolution** where:
  
  code | resolution
  --- | ---
- M | for minutes
- H | for hours
- d | for days
+ Timeline.M | for minutes
+ Timeline.H | for hours
+ Timeline.d | for days
  
 ##### start & stop 
 Optionally you can give a date and time range by setting **start** and **stop**. **stop** parameter always defaults to now, while **start's** default value depends of the resoluti on given.
 
  Format | Default Start Value |
  --- | --- 
- M |	24 hours ago
- H |	7 days ago
- d |	30 days ago
+ Timeline.M |	24 hours ago
+ Timeline.H |	7 days ago
+ Timeline.d |	30 days ago
     
     
 You can specify the dates using [java.utils.Date](https://docs.oracle.com/javase/6/docs/api/java/util/Date.html) or you can also use a String in many formats (see [Date Formats] (http://realtime.infinigongroup.com/api/docs/#data_dates)). All times are by default **UTC** so you must be explicit and add the timezone. You can test your date and time values using: 
@@ -77,7 +77,7 @@ y |	years	| 1y | starting a year ago
 ##### Reading minute timepoints for AAPL
 
 ```java
-Timeline timeline = new Timeline("AAPL", "M", proxy);
+Timeline timeline = new Timeline("AAPL", Timeline.M, proxy);
 for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 	System.out.print(i+". ");
 	System.out.println(timeline.next());
@@ -99,7 +99,7 @@ for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 ##### Reading hour of timepoints for AAPL
 
 ```java
-Timeline timeline = new Timeline("AAPL", "H", proxy);
+Timeline timeline = new Timeline("AAPL", Timeline.H, proxy);
 for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 	System.out.print(i+". ");
 	System.out.println(timeline.next());
@@ -121,11 +121,12 @@ for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 ##### Reading day of timepoints for AAPL
 
 ```java
-Timeline timeline = new Timeline("AAPL", "d", proxy);
+Timeline timeline = new Timeline("AAPL", Timeline.d, proxy);
 for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 	System.out.print(i+". ");
 	System.out.println(timeline.next());
 }
+```
 ```json
 0. {"date":"2015-07-22 00:00Z","sentiment":0.62,"tweets":26528}
 1. {"date":"2015-07-23 00:00Z","sentiment":0.64,"tweets":22045}
@@ -143,7 +144,7 @@ for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 ##### Reading last 4 days of day of timepoints for AAPL
 
 ```java
-Timeline timeline = new Timeline("AAPL", "d", proxy).start("4d");
+Timeline timeline = new Timeline("AAPL", Timeline.d, proxy).start("4d");
 for(int i=0; i < 20 && timeline.hasNext(); i++)  {
 	System.out.print(i+". ");
 	System.out.println(timeline.next());
@@ -159,7 +160,7 @@ for(int i=0; i < 20 && timeline.hasNext(); i++)  {
 ##### Reading minute data from a given time of day for AAPL
 
 ```java
-Timeline timeline = new Timeline("AAPL", "M").start("2015-08-19 12:34 EST").stop("2015-08-19 12:41 EST");
+Timeline timeline = new Timeline("AAPL", Timeline.M).start("2015-08-19 12:34 EST").stop("2015-08-19 12:41 EST");
 for(int i=0; i < 20 && timeline.hasNext(); i++)  {
 	System.out.print(i+". ");
 	System.out.println(timeline.next());
