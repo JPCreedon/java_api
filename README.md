@@ -30,7 +30,10 @@ The iterable `Timeline` class yields timepoints of data for a given stream that 
 
 
 ```json
-{"date":"2015-08-19 00:45Z","sentiment":0.0,"tweets":2}
+{	"date":"2015-08-19 00:45Z",
+	"sentiment":0.0,
+	"tweets":2
+}
 ```
 
 ### `Timeline` Parameters
@@ -190,7 +193,11 @@ You can use the Tweets iterator  to request tweets from any stream for a given p
 ### `Tweet` Data
 
 ```json
-{"date":"2015-08-19 00:43Z","sentiment":0.62,"tweets":26}
+ { 	"postedTime":"2015-08-21T00:42:08.000Z",
+ 	"author":"DeltaBravo33",
+ 	"text":"Instagram : by airbus.driver - #Qantas #QantasAirways #melbourneairport #melbourne #boeing #boeing737 #b737 #737 #m\u2026 http:\/\/t.co\/7TgGML73aA",
+ 	"avatar":"https:\/\/pbs.twimg.com\/profile_images\/589500634149343232\/wcMsP73m_normal.jpg"
+ }
 ```
 
 ### `Tweet` Parameters
@@ -247,5 +254,80 @@ for (Object tweet : tweets) {
 
 ```
 
+## `com.infinigongroup.api.Snapshot`
 
+
+`Snapshot` - Returns aggregation data for the streams selection of streams. Use this API to generate grids, maps, heat trees and clouds for groups of streams. 
+
+
+### `Snapshot` Data
+
+
+```json
+{
+			"description": "Chevron Corporation",
+			"sentiment": 0.558823529411764,
+			"tags": [
+				"Equities",
+				"Energy",
+				"SP500",
+				"Oil & Gas",
+				"DJ30"
+			],
+			"timestamp": {
+				"$date": 1440164723564
+			},
+			"symbol": "CVX",
+			"clout": 1292,
+			"words": [
+				[
+					"chevron",
+					18
+				],
+				[
+					"oil",
+					3
+				],
+				[
+					"morningword",
+					3
+				],
+				[
+					"slick",
+					3
+				],
+				[
+					"xom",
+					3
+				],
+				[
+					"cvx",
+					3
+				],
+				[
+					"negra",
+					2
+				],
+				[
+					"loma",
+					2
+				],
+				[
+					"superpozo",
+					2
+				],
+				[
+					"negro",
+					2
+				]
+			],
+			"activity": 34,
+			"change_5": 14,
+			"variance": -67,
+			"change_3": 69,
+			"change_10": 8
+		}
+```
+
+### `Snapshot` Parameters
 
