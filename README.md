@@ -362,4 +362,10 @@ Just remember in Reverse Polish Notation
 
 For more on RPN see http://en.wikipedia.org/wiki/Reverse_Polish_notation.
 
-
+##### `words`
+    Just as with `tags` you can filter by words in the word cloud using our RPN. The setting is character case insensitive. For instance 
+    '{buy}<best buy>*{fda}{approval}*|`
+Returns the data for streams whose word cloud **contains**  `buy` but **not** `best buy`, **or**  any streams  whose word cloud **contains** `fda` **and** `approval`. 
+    
+    
+    
