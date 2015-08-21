@@ -12,11 +12,11 @@ All the iterators take an optional Proxy object.
 ### Using a Proxy: 
 
 ```java
-	Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("10.38.89.25", 8080));
-	TimeSeries timeline = new Timeline("AAPL", "M", proxy);
-	for (Object timepoint : timeline) {
-			System.out.println(timepoint);
-	}
+Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("10.38.89.25", 8080));
+TimeSeries timeline = new Timeline("AAPL", Timeline.M, proxy);
+for (Object timepoint : timeline) {
+	System.out.println(timepoint);
+}
 		
 ```
 
@@ -78,9 +78,10 @@ y |	years	| `"1y"` | starting a year ago
 
 ```java
 TimeSeries timeline = new Timeline("AAPL", TimeSeries.M, proxy);
-for(int i=0; i < 10 && timeline.hasNext(); i++)  {
-	System.out.print(i+". ");
-	System.out.println(timeline.next());
+int i =0;
+for (Object timepoint : timeline) {
+	System.out.print(i++ + ". ");
+	System.out.println(timepoint);
 }
 ```
 ```json
@@ -100,9 +101,10 @@ for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 
 ```java
 TimeSeries timeline = new Timeline("AAPL", TimeSeries.H, proxy);
-for(int i=0; i < 10 && timeline.hasNext(); i++)  {
-	System.out.print(i+". ");
-	System.out.println(timeline.next());
+int i =0;
+for (Object timepoint : timeline) {
+	System.out.print(i++ + ". ");
+	System.out.println(timepoint);
 }
 ```
 ```json
@@ -122,9 +124,10 @@ for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 
 ```java
 TimeSeries timeline = new Timeline("AAPL", TimeSeries.d, proxy);
-for(int i=0; i < 10 && timeline.hasNext(); i++)  {
-	System.out.print(i+". ");
-	System.out.println(timeline.next());
+int i =0;
+for (Object timepoint : timeline) {
+	System.out.print(i++ + ". ");
+	System.out.println(timepoint);
 }
 ```
 ```json
@@ -145,9 +148,10 @@ for(int i=0; i < 10 && timeline.hasNext(); i++)  {
 
 ```java
 TimeSeries timeline = new Timeline("AAPL", TimeSeries.d, proxy).start("4d");
-for(int i=0; i < 20 && timeline.hasNext(); i++)  {
-	System.out.print(i+". ");
-	System.out.println(timeline.next());
+int i =0;
+for (Object timepoint : timeline) {
+	System.out.print(i++ + ". ");
+	System.out.println(timepoint);
 }
 ```
 ```json
@@ -161,9 +165,10 @@ for(int i=0; i < 20 && timeline.hasNext(); i++)  {
 
 ```java
 TimeSeries timeline = new Timeline("AAPL", TimeSeries.M).start("2015-08-19 12:34 EST").stop("2015-08-19 12:41 EST");
-for(int i=0; i < 20 && timeline.hasNext(); i++)  {
-	System.out.print(i+". ");
-	System.out.println(timeline.next());
+int i =0;
+for (Object timepoint : timeline) {
+	System.out.print(i++ + ". ");
+	System.out.println(timepoint);
 }
 ```
 ```json
