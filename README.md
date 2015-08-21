@@ -257,7 +257,7 @@ for (Object tweet : tweets) {
 ## `com.infinigongroup.api.Snapshot`
 
 
-`Snapshot` - Returns aggregation data for the streams selection of streams. Use this API to generate grids, maps, heat trees and clouds for groups of streams. 
+`Snapshot` - Returns aggregation data for a selection of streams. Use this API to generate grids, maps, heat trees and clouds for groups of streams. 
 
 
 ### `Snapshot` Data
@@ -322,7 +322,7 @@ for (Object tweet : tweets) {
 				]
 			],
 			"activity": 34,
-			"change_5": 14,
+			"change_5": 14,  
 			"variance": -67,
 			"change_3": 69,
 			"change_10": 8
@@ -330,4 +330,36 @@ for (Object tweet : tweets) {
 ```
 
 ### `Snapshot` Parameters
+
+
+##### `streams` 
+
+    You can specify one or more streams, comma delimited, the default is all streams with available data. 
+    
+    
+    
+##### `tags`
+    Instead of specifying streams you can specify category or groups of streams that we call tags. The notation is a little more developed that just a comma delimited list, so I'm going to show you some examples:
+
+* `tags={DJ30}{Energy}*`  Streams that are in the energy sector and belong to the DJ30. 
+* `<DJ30>` Streams that are NOT in the DJ30.
+* `{Energy}<DJ30>*` Streams that are in the energy sector and DO NOT belong to the DJ30.
+* `{Energy}<DJ30>*{SP500}|` (Streams that are in energy sector but do not belong to the DJ30) OR ( those that belong to the SP500).
+
+
+As you can see we are using Reverse Polish Notation.
+
+    Sets of tags you want are defined using comma delimited tags in braces {}
+    Sets of tags you don't want are defined using comma delimited tags in braces angle brackets <>
+    You can union (or OR) your sets using the | pipe symbol.
+    You can intersect (or AND) your sets using the * star symbol.
+
+Just remember in Reverse Polish Notation
+
+    operandA operandB operator = operandA operator operandB
+    operandA operandB operator1 operandC operator2 = (operandA operator1 operandB) operator2 operandC
+    operandA operandB operator1 operandC operandD operator2 operator3 = (operandA operator1 operandB) operator3 (operandC operator2 operandD)
+
+For more on RPN see http://en.wikipedia.org/wiki/Reverse_Polish_notation.
+
 
