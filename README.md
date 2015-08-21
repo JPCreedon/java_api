@@ -47,7 +47,7 @@ The constructor requires **stream** and **resolution** where:
  `TimeSeries.d` | for days
  
 ##### start & stop 
-Optionally you can give a date and time range by setting **start** and **stop**. **stop** parameter always defaults to now, while **start's** default value depends of the resoluti on given.
+Optionally you can give a date and time range by setting **start** and **stop**. **stop** parameter always defaults to now, while **start's** default value depends of the resolution on given.
 
  Format | Default Start Value |
  --- | --- 
@@ -198,29 +198,21 @@ You can use the Tweets iterator  to request tweets from any stream for a given p
 ##### stream & resolution 
 The constructor requires **stream** and **resolution** where:
 * **stream** - is the **stream** id such as *AAPL* or *FDA*
-* **resolution**  - Data is aggregated by minute, hour or day (for more see [Resolutions](http://realtime.infinigongroup.com/api/docs/#data_resolutions) ) so you can use:
- 
- code | resolution
- --- | ---
- `Tweet.M` | for minutes
- `Tweet.H` | for hours
- `Tweet.d` | for days
- 
-##### start & stop 
-Optionally you can give a date and time range by setting **start** and **stop**. **stop** parameter always defaults to now, while **start's** default value depends of the resoluti on given.
+* **resolution**  - Tweets are indexed by minute M or by hour H (for more see [Resolutions](http://realtime.infinigongroup.com/api/docs/#data_resolutions) ) so you can use:
 
- Format | Default Start Value |
- --- | --- 
- `Tweet.M` |	24 hours ago
- `Tweet.H` |	7 days ago
- `Tweet.d` |	30 days ago
-    
-    
-You can specify the dates using [`java.utils.Date`](https://docs.oracle.com/javase/6/docs/api/java/util/Date.html) or you can also use a String in many formats (see [Date Formats] (http://realtime.infinigongroup.com/api/docs/#data_dates)). All times are by default **`UTC`** so you must be explicit and add the timezone. You can test your date and time values using: 
+ Using code | Returns
+ --- | ---
+ `Tweet.M` |   tweets collected in the current minute
+ `Tweet.H` |  tweets collected in the current hour
+
+
+ 
+##### start
+You can optionally give a valid start from which to collect tweets.  You can specify the start using [`java.utils.Date`](https://docs.oracle.com/javase/6/docs/api/java/util/Date.html) or you can also use a String in many formats (see [Date Formats] (http://realtime.infinigongroup.com/api/docs/#data_dates)). All times are by default **`UTC`** so you must be explicit and add the timezone. You can test your date and time values using: 
 
 ##### Time Delta
 
-For the **start** parameter you can also give a *time delta*, specifying a period of time before the given (or default) **stop** date.
+For the **start** parameter you can also give a *time delta*, specifying a period of time before your current time.
 
 Period Code |	Period	| Example | Description 
 --- | --- | --- | --- | ---
@@ -229,18 +221,21 @@ H |	hours	| `"8H"` | starting eight hours ago
 d |	days	|`"5d"` | starting five days ago
 w |	weeks	| `"2w"` | starting fortnight ago
 m |	months	| `"3m"` | starting on the same date 3 months ago
-y |	years	| `"1y"` | starting a year ago
+y |	years	| `"1y"` | starting a year ago 
+
+ 
 
 
 ### `Tweet` Examples
 
-##### Reading minute tweets for BA
+##### Reading minute tweets for FB
 
 ```java
-Tweets tweets = new Tweets("AAPL", Timeline.M, proxy);
-for(int i=0; i < 10 && tweets.hasNext(); i++)  {
-	System.out.print(i+". ");
-	System.out.println(timeline.next());
+TimeSeries tweets = new Tweets("FB", TimeSeries.M, proxy);
+int i =0;
+for (Object tweet : tweets) {
+	System.out.print(i++ + ". ");
+	System.out.println(tweet);
 }
 ```
 ```json
@@ -259,10 +254,11 @@ for(int i=0; i < 10 && tweets.hasNext(); i++)  {
 ##### Reading hour of tweets for AAPL
 
 ```java
-Timeline timeline = new Timeline("AAPL", Timeline.H, proxy);
-for(int i=0; i < 10 && timeline.hasNext(); i++)  {
-	System.out.print(i+". ");
-	System.out.println(timeline.next());
+tweets = new Tweets("FB", TimeSeries.H, proxy);
+int i =0;
+for (Object tweet : tweets) {
+	System.out.print(i++ + ". ");
+	System.out.println(tweet);
 }
 ```
 ```json
