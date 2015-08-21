@@ -329,9 +329,22 @@ for (Object tweet : tweets) {
 		}
 ```
 
+### `Snapshot` Fields
+
+##### `last_request`
+    Gives you the timestamp in java.util.Date  of the last update. 
+    
+    
 ### `Snapshot` Parameters
 
 
+##### `since`
+    Use this parameter to retrieve streams that have had activity since some given date. See the documentation on start. See above documentation on `start`.
+    
+
+##### `age`
+    Use parameter to retrieve streams that have had activity since the last age seconds. 
+    
 ##### `streams` 
 
     You can specify one or more streams, comma delimited, the default is all streams with available data. 
@@ -368,4 +381,38 @@ For more on RPN see http://en.wikipedia.org/wiki/Reverse_Polish_notation.
 Returns the data for streams whose word cloud **contains**  `buy` but **not** `best buy`, **or**  any streams  whose word cloud **contains** `fda` **and** `approval`. 
     
     
+##### `change_3`
+    Use this parameter to filter by **percent change** in the last **3 minutes**. 
+
+##### `change_5`
+    Use this parameter to filter by **percent change** in the last **5 minutes**. 
     
+##### `change_10`
+    Use this parameter to filter by **percent change** in the last **10 minutes**. 
+    
+##### `variance`
+    Use this parameter to filter by **variance** for the hour. So if you used a value of 30 the Snapshot iterator would return data for streams that have 30% or more tweets than the average for that stream for the given hour for that day. This is useful for consumer companies such as Mac Donald's that typically have a higher rate at lunch times and in the evenings.
+    
+    
+##### `fields`
+    You can specify which fields you want to retrieve using a comma delimited list. By default you get them all. The available fields are:
+
+* activity
+* change_3
+* change_5
+* change_10
+* description
+* sentiment
+* variance
+* words
+* tags
+
+##### `order`
+    You can use the order parameter to return the data sorted by a field, for example:
+
+ * `variance`  Returns the data in ascending order
+ * `-variance` Returns the data in descending order
+
+
+
+
