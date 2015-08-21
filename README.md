@@ -195,24 +195,24 @@ You can use the Tweets iterator  to request tweets from any stream for a given p
 
 ### `Tweet` Parameters
 
-##### stream & resolution 
+##### stream 
 The constructor requires **stream** and **resolution** where:
 * **stream** - is the **stream** id such as *AAPL* or *FDA*
-* **resolution**  - Tweets are indexed by minute M or by hour H (for more see [Resolutions](http://realtime.infinigongroup.com/api/docs/#data_resolutions) ) so you can use:
 
- Using code | Returns
- --- | ---
- `Tweet.M` |   tweets collected in the current minute
- `Tweet.H` |  tweets collected in the current hour
 
 
  
-##### start
-You can optionally give a valid start from which to collect tweets.  You can specify the start using [`java.utils.Date`](https://docs.oracle.com/javase/6/docs/api/java/util/Date.html) or you can also use a String in many formats (see [Date Formats] (http://realtime.infinigongroup.com/api/docs/#data_dates)). All times are by default **`UTC`** so you must be explicit and add the timezone. You can test your date and time values using: 
+##### start & stop 
+As with Timeline you can give a date and time range by setting **start** and **stop**. **stop** parameter always defaults to now, while **start's** default value is the start of the current minute.
+
+
+    
+    
+You can specify the dates using [`java.utils.Date`](https://docs.oracle.com/javase/6/docs/api/java/util/Date.html) or you can also use a String in many formats (see [Date Formats] (http://realtime.infinigongroup.com/api/docs/#data_dates)). All times are by default **`UTC`** so you must be explicit and add the timezone. You can test your date and time values using: 
 
 ##### Time Delta
 
-For the **start** parameter you can also give a *time delta*, specifying a period of time before your current time.
+For the **start** parameter you can also give a *time delta*, specifying a period of time before the given (or default) **stop** date.
 
 Period Code |	Period	| Example | Description 
 --- | --- | --- | --- | ---
@@ -221,7 +221,7 @@ H |	hours	| `"8H"` | starting eight hours ago
 d |	days	|`"5d"` | starting five days ago
 w |	weeks	| `"2w"` | starting fortnight ago
 m |	months	| `"3m"` | starting on the same date 3 months ago
-y |	years	| `"1y"` | starting a year ago 
+y |	years	| `"1y"` | starting a year ago
 
  
 
@@ -246,4 +246,6 @@ for (Object tweet : tweets) {
 
 
 ```
+
+
 
