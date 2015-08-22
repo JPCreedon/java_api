@@ -342,8 +342,7 @@ for (Object tweet : tweets) {
     Use this parameter to retrieve streams that have had activity since some given date. See the documentation on start. See above documentation on `start`.
     
 
-##### `age`
-    Use parameter to retrieve streams that have had activity since the last age seconds. 
+
     
 ##### `streams` 
 
