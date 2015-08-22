@@ -51,11 +51,15 @@ public abstract class InfinigonIterable implements Iterable<Object> {
     protected void load(String url_string) {
         System.out.println(url_string);
         HttpURLConnection connection;
+
+
         try {
             if (proxy != null)
                 connection = ((HttpURLConnection) new URL(url_string).openConnection(proxy));
             else
                 connection = ((HttpURLConnection) new URL(url_string).openConnection());
+            if (getToken() != null)
+                connection.setRequestProperty("Authorization", "Token " + getToken());
             connection.connect();
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             response = parse(br);
@@ -66,6 +70,7 @@ public abstract class InfinigonIterable implements Iterable<Object> {
             e.printStackTrace();
         }
     }
+
 
     /**
      * Returns a JSON object: content of a REST GET The br argument must specify
@@ -141,4 +146,13 @@ public abstract class InfinigonIterable implements Iterable<Object> {
         };
     }
 
+
+    public String getToken() {
+        return System.getenv().get(getEnvTokenKey());
+
+    }
+
+    public String getEnvTokenKey() {
+        return "INFINIGON_TOKEN";
+    }
 }

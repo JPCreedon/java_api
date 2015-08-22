@@ -13,6 +13,62 @@ public class Examples {
 
         i = 0;
 
+
+        for (Object snapshot : new Snapshots().streams("AAPL", "GOOG")) {
+            System.out.print(i++ + ". ");
+            System.out.println(snapshot);
+            if (i == 20) break;
+        }
+        i = 0;
+        for (Object snapshot : new Snapshots().tags("{DJ30}{Energy}*")) {
+            System.out.print(i++ + ". ");
+            System.out.println(snapshot);
+            if (i == 20) break;
+        }
+        i = 0;
+        for (Object snapshot : new Snapshots().tags("{Energy}<DJ30>*")) {
+            System.out.print(i++ + ". ");
+            System.out.println(snapshot);
+            if (i == 20) break;
+        }
+
+        i = 0;
+        for (Object snapshot : new Snapshots().words("{buy}<best buy>*{fda}{approval}*|")) {
+            System.out.print(i++ + ". ");
+            System.out.println(snapshot);
+            if (i == 20) break;
+        }
+        i = 0;
+        for (Object snapshot : new Snapshots().change_3(300).change_5(180).change_10(300)) {
+            System.out.print(i++ + ". ");
+            System.out.println(snapshot);
+            if (i == 20) break;
+        }
+
+        i = 0;
+        for (Object snapshot : new Snapshots().variance(3000)) {
+            System.out.print(i++ + ". ");
+            System.out.println(snapshot);
+            if (i == 20) break;
+        }
+        i = 0;
+        for (Object snapshot : new Snapshots().variance(3000).fields("variance", "sentiment")) {
+            System.out.print(i++ + ". ");
+            System.out.println(snapshot);
+            if (i == 20) break;
+        }
+
+        i = 0;
+        for (Object snapshot : new Snapshots().variance(3000).fields("variance", "sentiment").order("-sentiment")) {
+            System.out.print(i++ + ". ");
+            System.out.println(snapshot);
+            if (i == 20) break;
+        }
+
+
+
+
+
         Tags tags = new Tags();
         for (Object tag : tags) {
             System.out.print(i++ + ". ");

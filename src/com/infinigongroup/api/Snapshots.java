@@ -1,6 +1,8 @@
 package com.infinigongroup.api;
 
+import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
+import java.net.URLEncoder;
 import java.util.Date;
 
 public class Snapshots extends InfinigonIterable {
@@ -40,13 +42,26 @@ public class Snapshots extends InfinigonIterable {
 	}
 
 
-	public Snapshots tags(String... tags) {
-		this.include_tags = String.join("", tags);
+	public Snapshots tags(String tags) {
+
+
+		try {
+			this.include_tags = URLEncoder.encode(tags, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
 		return this;
 	}
 
-	public Snapshots words(String... words) {
-		this.include_words = String.join(",", words);
+	public Snapshots words(String words) {
+
+		try {
+			this.include_words = URLEncoder.encode(words, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
 		return this;
 	}
 
