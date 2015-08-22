@@ -2,9 +2,12 @@
 A java api for  the Infinigon's Social Analytical service
 This api offers three iterable classes Timeline, Tweets, and Snaphots. 
 
-Prequisits
+## Prequisits
 
-The only prequisit is that the API uses by default [`json-simple`](https://github.com/fangyidong/json-simple)
+The only prequisit is that the API uses by default [json-simple-1.1.1.jar](https://github.com/fangyidong/json-simple). Down load the jar and put it somewhere in your `CLASS_PATH`. 
+
+
+
 
 
 ## Connecting.
@@ -607,6 +610,12 @@ for (Object snapshot : new Snapshots().variance(3000).fields("variance", "sentim
 2. {"symbol":"URE","sentiment":0.1,"variance":5900}
 ``` 
 
+## Replacing `json-simple-1.1.1.jar`.
+
+1.  Override  `protected Object parse(BufferedReader br)` to call your new JSON parser.
+2.  Override `protected int resultsSize()` to return the size of the JSON result array.
+3.  Override `protected Object resultsGet(int index)` to return an element of the JSON result array.
+4.  Override `protected Object responseGet(String key)` to return an value of the JSON response object.
 
 
 
