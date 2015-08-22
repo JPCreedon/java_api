@@ -2,11 +2,22 @@
 A java api for  the Infinigon's Social Analytical service
 This api offers three iterable classes Timeline, Tweets, and Snaphots. 
 
-Prequisits: json-simple - https://github.com/fangyidong/json-simple
+Prequisits
+
+The only prequisit is that the API uses by default [`json-simple`](https://github.com/fangyidong/json-simple)
 
 
-## Connecting through a proxy.
+## Connecting.
 All the iterators take an optional Proxy object.
+
+
+### Token 
+
+For anonymous users the API is throttled. This allows you to either test against our system or create pages that are fairly static but calling these too frequently will get you an error such as: callback({"detail": "Request was throttled.Expected available in 85250 seconds."}); For any serious use you will need to use our simple token-based HTTP Authentication scheme. By default the API checks for an environment variable `INFINIGON_TOKEN`.  To use your own token strategy just override `getToken()` of `com.infinigongroup.api.InfinigonIterable`.
+
+
+
+
 
 
 ### Using a Proxy: 
