@@ -2,7 +2,7 @@
 A java api for  the Infinigon's Social Analytical service
 This api offers three iterable classes Timeline, Tweets, and Snaphots. 
 
-## Prequisits
+## REQUIRED LIBRARIES
 
 The only prequisit is that the API uses by default [json-simple-1.1.1.jar](https://github.com/fangyidong/json-simple). Down load the jar and put it somewhere in your `CLASS_PATH`. 
 
