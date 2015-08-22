@@ -347,16 +347,64 @@ for (Object tweet : tweets) {
 ##### `streams` 
 
     You can specify one or more streams, comma delimited, the default is all streams with available data. 
-    
-    
+```#java    
+for (Object snapshot : new Snapshots().streams("AAPL", "GOOG")) {
+    System.out.print(i++ + ". ");
+    System.out.println(snapshot);
+    if (i == 20) break;
+}
+```
+
+```#json
+0. {"clout":9278,"sentiment":0.6392857143,"symbol":"AAPL","change_10":7,"activity":6537,"change_3":18,"variance":-94,"change_5":18,"words":[["iphone",118.0],["ipad",86.0],["apple",68.0],["gameinsight",36.0],["full",29.0],["steve",27.0],["jobs",27.0],["ipadgames",27.0],["read",19.0],["16gb",17.0]],"description":"Apple Inc","tags":["Personal Computers","Equities","SP500","Technology","PWTRADEWATCHLIST"],"timestamp":{"$date":1440282041210}}
+1. {"clout":5976,"sentiment":0.7231638418,"symbol":"GOOG","change_10":13,"activity":3351,"change_3":34,"variance":-92,"change_5":20,"words":[["google",105.0],["play",22.0],["servers",19.0],["allaboutgoogle",19.0],["datacenter",19.0],["loses",18.0],["disponible",18.0],["data",18.0],["app",15.0],["consecutive",15.0]],"description":"Google Inc.","tags":["Equities","SP500","Technology","Internet Information Providers","PWTRADEWATCHLIST"],"timestamp":{"$date":1440282020217}}
+```
+
     
 ##### `tags`
     Instead of specifying streams you can specify category or groups of streams that we call tags. The notation is a little more developed that just a comma delimited list, so I'm going to show you some examples:
 
-* `tags={DJ30}{Energy}*`  Streams that are in the energy sector and belong to the DJ30. 
+* `{DJ30}{Energy}*`  Streams that are in the energy sector and belong to the DJ30. 
 * `<DJ30>` Streams that are NOT in the DJ30.
 * `{Energy}<DJ30>*` Streams that are in the energy sector and DO NOT belong to the DJ30.
 * `{Energy}<DJ30>*{SP500}|` (Streams that are in energy sector but do not belong to the DJ30) OR ( those that belong to the SP500).
+
+
+###### Snapshots of streams that are in the energy sector and belong to the DJ30. 
+
+```#java    
+for (Object snapshot : new Snapshots().tags("{DJ30}{Energy}*")) {
+    System.out.print(i++ + ". ");
+    System.out.println(snapshot);
+    if (i == 20) break;
+}
+```
+
+```#json
+0. {"clout":1557,"sentiment":0.575,"symbol":"XOM","change_10":-42,"activity":155,"change_3":-47,"variance":-72,"change_5":-39,"words":[["mobil",30.0],["baru",6.0],["ini",6.0],["drive",6.0],["coba",6.0],["mau",6.0],["test",6.0],["iims",6.0],["pameran",6.0],["bisa",6.0]],"description":"Exxon Mobil Corporation","tags":["Equities","Energy","SP500","Oil & Gas","DJ30"],"timestamp":{"$date":1440282187760}}
+1. {"clout":1356,"sentiment":0.5666666667,"symbol":"CVX","change_10":15,"activity":30,"change_3":-23,"variance":25,"change_5":15,"words":[["chevron",26.0],["etsy",7.0],["blue",4.0],["via",2.0],["pnnfi0xrsb",2.0],["yellow",2.0],["female",2.0],["help",2.0],["transfer",2.0],["white",2.0]],"description":"Chevron Corporation","tags":["Equities","Energy","SP500","Oil & Gas","DJ30"],"timestamp":{"$date":1440282211473}}
+
+```
+
+
+###### Snapshots of streams that are in the energy sector and DO NOT belong to the DJ30.
+
+```#java    
+for (Object snapshot : new Snapshots().tags("{Energy}<DJ30>*")) {
+    System.out.print(i++ + ". ");
+    System.out.println(snapshot);
+    if (i == 20) break;
+}
+```
+
+```#json
+
+0. {"clout":98,"sentiment":0.0,"symbol":"SGY","change_10":3500,"activity":2,"change_3":-100,"variance":0,"change_5":-100,"words":[],"description":"Stone Energy Corp.","tags":["Equities","Energy","Independent Oil & Gas","AUTOGEN","NYSE"],"timestamp":{"$date":1440282083093}}
+1. {"clout":93,"sentiment":0.25,"symbol":"E","change_10":-26,"activity":4,"change_3":-100,"variance":-13,"change_5":-100,"words":[],"description":"Eni S.P.A.","tags":["Major Integrated Oil & Gas","AUTOGEN","Equities","Energy","PWTRADEWATCHLIST","NYSE"],"timestamp":{"$date":1440282247729}}
+
+```
+
+
 
 
 As you can see we are using Reverse Polish Notation.
@@ -413,5 +461,7 @@ Returns the data for streams whose word cloud **contains**  `buy` but **not** `b
  * `-variance` Returns the data in descending order
 
 
+### `Snapshots` Examples
 
+##### Snapshots where variance 
 
