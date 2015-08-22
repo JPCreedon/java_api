@@ -1,8 +1,9 @@
 package com.infinigongroup.api;
 
 import java.net.Proxy;
+import java.util.Date;
 
-public class Snapshots extends ResultIterable {
+public class Snapshots extends InfinigonIterable {
 
 	String include_streams;
 	String include_tags;
@@ -11,7 +12,10 @@ public class Snapshots extends ResultIterable {
 	String variance_filter;
 	String sentiment_filter;
 	String include_fields;
-	String qs = "";
+	String field_order;
+
+	String since_filter;
+
 
 	public Snapshots() {
 		super(null);
@@ -26,6 +30,16 @@ public class Snapshots extends ResultIterable {
 		return this;
 	}
 
+	public Snapshots since(Date sinceDate) {
+		return since(sinceDate.toString());
+	}
+
+	public Snapshots since(String sinceDate) {
+		this.since_filter = sinceDate;
+		return this;
+	}
+
+
 	public Snapshots tags(String... tags) {
 		this.include_tags = String.join("", tags);
 		return this;
@@ -38,6 +52,11 @@ public class Snapshots extends ResultIterable {
 
 	public Snapshots fields(String... fields) {
 		this.include_fields = String.join(",", fields);
+		return this;
+	}
+
+	public Snapshots order(String... fields) {
+		this.field_order = String.join(",", fields);
 		return this;
 	}
 
@@ -87,6 +106,11 @@ public class Snapshots extends ResultIterable {
 			url += "&sentiment=" + sentiment_filter;
 		if (include_fields != null)
 			url += "&fields=" + include_fields;
+		if (field_order != null)
+			url += "&order=" + field_order;
+		if (since_filter != null)
+			url += "&since=" + since_filter;
+
 		return url;
 	}
 
