@@ -4,7 +4,7 @@ This api offers three iterable classes Timeline, Tweets, and Snaphots.
 
 ## REQUIRED LIBRARIES
 
-The only prequisit is that the API uses by default [json-simple-1.1.1.jar](https://github.com/fangyidong/json-simple). Down load the jar and put it somewhere in your `CLASS_PATH`. 
+The only prequisit is that the API uses by default [json-simple-1.1.1.jar](https://github.com/fangyidong/json-simple) and [jinfinigon.jar](https://github.com/thanos/jinfinigon/raw/master/dist/jinfinigon_jar/jinfinigon.jar). Down load both jars and put it somewhere in your `CLASS_PATH`. 
 
 
 
