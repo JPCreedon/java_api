@@ -26,7 +26,7 @@ For anonymous users the API is throttled. This allows you to either test against
 ### Using a Proxy: 
 
 ```java
-Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("10.38.89.25", 8080));
+Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("192.1.0.1", 8080));
 TimeSeries timeline = new Timeline("AAPL", Timeline.M, proxy);
 for (Object timepoint : timeline) {
 	System.out.println(timepoint);
