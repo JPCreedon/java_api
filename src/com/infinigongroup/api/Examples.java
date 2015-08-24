@@ -8,7 +8,7 @@ public class Examples {
     }
 
     public static void main(String[] args) throws Exception {
-        Proxy proxy = null; //new Proxy(Proxy.Type.HTTP, new InetSocketAddress("10.38.89.25", 8080));
+        Proxy proxy = null; 
         int i = 0;
 
         i = 0;
